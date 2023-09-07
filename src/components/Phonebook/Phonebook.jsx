@@ -34,6 +34,10 @@ export function Phonebook() {
   const saveContact = e => {
     e.preventDefault();
 
+    if (!data) {
+      return;
+    }
+
     for (let el of data) {
       if (el.name === name) {
         return alert(`${name} is already in contacts`);
