@@ -1,4 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import authSelectors from './authSelectors';
+
+console.log(authSelectors.getUserToken);
 
 export const contactsApi = createApi({
     reducerPath: 'contactsApi',
@@ -8,7 +11,7 @@ export const contactsApi = createApi({
         fetchContacts: builder.query({
             query: () => `/contacts`,
             providesTags: ['Contact'],
-            headers: { Authorization: `Bearer ` }
+            headers: { Authorization: `${authSelectors.getUserToken}` }
         }),
         createContact: builder.mutation({
             query: (newContact) => ({
