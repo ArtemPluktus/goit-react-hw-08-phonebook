@@ -7,6 +7,7 @@ import { EmptyPage } from './Phonebook/EmptyPage.jsx';
 import authOperations from '../redux/authOperations.js';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import PrivateRoute from './routes/PrivateRoute.js';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,10 @@ export const App = () => {
         <Route index element={<EmptyPage />} />
         <Route path="login" element={<LogInView />} />
         <Route path="register" element={<RegisterView />} />
-        <Route path="contacts" element={<Phonebook />} />
+        <Route
+          path="contacts"
+          element={<PrivateRoute redirectTo="/" component={<Phonebook />} />}
+        />
       </Route>
     </Routes>
   );
