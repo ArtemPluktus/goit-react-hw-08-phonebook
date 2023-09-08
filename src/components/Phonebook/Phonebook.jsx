@@ -12,14 +12,14 @@ import {
 } from '../../redux/contactsSlice.js';
 
 export function Phonebook() {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState(``);
   const [number, setNumber] = useState(``);
 
   const { data } = useFetchContactsQuery();
   const [deleteContact] = useDeleteContactMutation();
   const [createContact] = useCreateContactMutation();
-
-  const dispatch = useDispatch();
 
   const myFilter = useSelector(state => state.filter);
 

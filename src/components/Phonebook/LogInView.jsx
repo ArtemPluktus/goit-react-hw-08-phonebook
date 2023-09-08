@@ -22,7 +22,9 @@ export const LogInView = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(authOperations.logIn({ email, password }));
+    dispatch(authOperations.logIn({ email, password })).then(() => {
+      window.location.reload();
+    });
     setEmail('');
     setPassword('');
   };

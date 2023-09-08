@@ -10,6 +10,12 @@ export const Layout = () => {
   const isLogin = useSelector(authSelectors.getIsLoggedIn);
   const name = useSelector(authSelectors.getUserName);
 
+  const logOut = () => {
+    dispatch(authOperations.logOut()).then(() => {
+      window.location.reload();
+    });
+  };
+
   return (
     <div className={css.layout}>
       <header className={css.header}>
@@ -26,11 +32,7 @@ export const Layout = () => {
         {isLogin ? (
           <div className={css.user}>
             <span className={css.userName}>Hello {name}</span>
-            <button
-              type="button"
-              className={css.logout}
-              onClick={() => dispatch(authOperations.logOut())}
-            >
+            <button type="button" className={css.logout} onClick={logOut}>
               Log out
             </button>
           </div>
